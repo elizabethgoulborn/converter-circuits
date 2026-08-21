@@ -1,4 +1,4 @@
-# Function to plot waveform
+# Function to calculate the inductor current waveform over a given time
 
 def I_L_plot(t, mode, T, t_on, I_L, I_L_ave, t_off):
 

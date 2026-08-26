@@ -27,7 +27,6 @@ def buck_plot(V_in, f_switch, L, C, D, R):
 	import math
 	import numpy as np
 	import matplotlib.pyplot as plt
-	from I_L_plot import I_L_plot
 	
 
 	# Confirm valid inputs to function call

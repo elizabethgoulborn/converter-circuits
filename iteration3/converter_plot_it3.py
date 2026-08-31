@@ -108,7 +108,7 @@ def converter_plot_it3(circuit, V_in, f_switch, L, C, D, R, s_lim, I_L_i, V_C_i)
 		if T_passed >= T_sampling_max:
 				
 			# Indicate issue to user
-			print("\nWarning: steady-state could not be reached. V_out and t_ss are taken as best estimates.")
+			raise ValueError("\nWarning: steady-state could not be reached. V_out and t_ss are taken as best estimates.")
 			
 			# Exit loop
 			transient = False

@@ -52,6 +52,23 @@
 
 <img width="2502" height="934" alt="Screenshot 2026-08-24 231054" src="https://github.com/user-attachments/assets/de2e32b4-b7a6-41c7-9a85-5b451569e1f7" />
 
+## **Iteration 3: Converter simulator: Buck, Boost, Buck-boost**
 
+  **Objective:** Adapt on the previous numerical integrator to make a modelling function that can adapt to different types of converter circuit, as this is more widely applicable to different power systems in reality.<br/>
+  **Language used:** Python<br/>
+  **Libraries used:** math, numpy, matplotlib<br/>
+  **Main achievements:** Generalised code to multiple types of converters, generated V_C and I_L when needed (until steady-state identified) rather than for a set time block (improved applicability), increased understanding of numpy capabilities<br/>
+  **Drawbacks:** Did not model additional resistive losses, includes repeated code blocks for the buck_plot, boost_plot, and buck_boost_plot functions (violates standard programming etiquette, DRY)<br/>
+  **Aims for next iteration:** Act on aforementioned drawbacks, update this iteration soon with a testing function to double check edge cases and solidify this program as functional.
+  <br/><br/>
 
+**Note: comments on some suggested inputs will be given when the converter testing function has been made, in order to show the full range of functionality**
+
+  <br/><br/>
+
+  One of the major changes implemented in this code is the method of obtaining plottable arrays for V_C, I_L, and t. In the previous iteration, arrays were generated using a predefined plotting time span. This poses issues when trying to define t_ss and V_out (time to reach steady-state and final steady-state output voltage), or when working with input circuits with vastly different settling times. To counteract this problem, I instead generated output arrays iteratively, using settling limits (s_lim) to decide if a new generation was needed or if the outputs had settled. To prevent an infinite loop I included a sampling maximum (T_sampling_max) after which the code will raise a ValueError. One issue I noted with this is I arbitrarily chose my T_sampling_max as some large number of iterations. A suggested improvement is to calculate some edge case from which to base my sampling maximum from rather than using trial and error as a baseline.
+
+  <br/><br/>
+
+Upon reflection, the most important technical aspect I took away from this iteration was the occurrence of array-indexing errors and their sources. In addition to simpler errors such as conflating Boolean masking and positional indexing, there are some subtler pitfalls in my code. For instance, in ascertaining the rise time of these systems, the use of min() does not necessarily find the desired time segment, thus some further instructions on the expected output are required. Noticing these bugs in my code has improved my attention to detail and logical thinking and I hope to improve further upon these skills using this project in future iterations.
 
